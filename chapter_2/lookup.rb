@@ -7,3 +7,5 @@ end
 
 obj = MySubclass.new
 p obj.my_method()
+
+p MySubclass.ancestors
