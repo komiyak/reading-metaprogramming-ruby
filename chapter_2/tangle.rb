@@ -28,3 +28,9 @@ class Book
     include Document
     include Printable
 end
+
+b = Book.new
+b.print_to_screen
+
+# To check
+puts Book.ancestors
