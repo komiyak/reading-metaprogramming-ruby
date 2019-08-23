@@ -2,6 +2,12 @@ class C
   def a_method
     'C#a_method'
   end
+
+  class << self
+    def a_class_method
+      'C.a_class_method()'
+    end
+  end
 end
 
 class D < C; end
@@ -19,3 +25,9 @@ end
 
 p obj.singleton_class
 p obj.singleton_class.superclass
+
+p C.singleton_class
+p D.singleton_class
+p D.singleton_class.superclass
+p C.singleton_class.superclass
+
