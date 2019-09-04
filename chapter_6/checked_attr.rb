@@ -1,5 +1,16 @@
+module CheckedAttributes
+  def attr_checked(age)
+    puts 'call ' + age.to_s
+
+    # and add a instance method to the subclass.
+  end
+end
+
+
 class Person
-  include CheckedAttributes
+  class << self
+    include CheckedAttributes
+  end
 
   attr_checked :age do |v|
     v >= 18
