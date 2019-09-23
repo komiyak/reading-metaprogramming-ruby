@@ -30,11 +30,13 @@ def add_checked_attribute(klass, attribute)
   klass.class_eval do
     define_method("#{attribute.to_s}=") do |x|
       raise if x == nil || x == false
-      eval("@#{attribute} = x")
+      #eval("@#{attribute} = x")
+      instance_variable_set("@#{attribute}", x)
     end
 
     define_method("#{attribute.to_s}") do
-      eval("@#{attribute}")
+      #eval("@#{attribute}")
+      instance_variable_get("@#{attribute}")
     end
   end
 end
