@@ -1,17 +1,15 @@
 require 'test/unit'
 
-class Object
-  class << self
-    def attr_checked(name, &validation_block)
-      define_method("#{name.to_s}=") do |value|
-        raise unless value
-        raise unless validation_block.call(value)
-        instance_variable_set("@#{name}", value)
-      end
+class Class
+  def attr_checked(name, &validation_block)
+    define_method("#{name.to_s}=") do |value|
+      raise unless value
+      raise unless validation_block.call(value)
+      instance_variable_set("@#{name}", value)
+    end
 
-      define_method("#{name.to_s}") do
-        instance_variable_get("@#{name}")
-      end
+    define_method("#{name.to_s}") do
+      instance_variable_get("@#{name}")
     end
   end
 end
